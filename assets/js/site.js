@@ -173,3 +173,39 @@
     probe.src = src;
   });
 })();
+
+
+/* ============================================================
+   EXPANDABLE BIOGRAPHIES — printing
+   ------------------------------------------------------------
+   A collapsed <details> hides its contents in a way CSS cannot override, so
+   printing the keynotes page would otherwise produce names with no text under
+   them. Open everything before the print dialog and restore afterwards, so the
+   reader's own open/closed choices survive.
+   ============================================================ */
+(function () {
+  var panels = document.querySelectorAll('details.bio');
+  if (!panels.length || !window.matchMedia) return;
+
+  var wasOpen = [];
+
+  function expand() {
+    wasOpen = [];
+    Array.prototype.forEach.call(panels, function (d, i) {
+      wasOpen[i] = d.open;
+      d.open = true;
+    });
+  }
+  function restore() {
+    Array.prototype.forEach.call(panels, function (d, i) { d.open = wasOpen[i]; });
+  }
+
+  window.addEventListener('beforeprint', expand);
+  window.addEventListener('afterprint', restore);
+
+  /* Safari fires neither event; it only flips the print media query. */
+  var mq = window.matchMedia('print');
+  var onChange = function (e) { (e.matches ? expand : restore)(); };
+  if (mq.addEventListener) mq.addEventListener('change', onChange);
+  else if (mq.addListener) mq.addListener(onChange);
+})();

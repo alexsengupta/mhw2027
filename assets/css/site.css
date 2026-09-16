@@ -514,3 +514,41 @@ p{margin:0 0 1em}
   font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
   background:#fdf0e3;color:#9a5512;
 }
+
+/* --- Expandable biography -------------------------------------------------
+   <details>/<summary> is the native disclosure widget: it opens with no
+   JavaScript, it is announced correctly by screen readers, and Ctrl+F in
+   Chrome and Safari will open a closed section to reveal a match. The Wix
+   Studio equivalent is the Accordion element.
+   -------------------------------------------------------------------------- */
+.speaker .bio{border-top:1px solid #e8eef6;margin-top:4px;padding-top:12px}
+.speaker .bio > summary{
+  display:flex;align-items:center;gap:8px;width:fit-content;
+  cursor:pointer;list-style:none;
+  font-size:14px;font-weight:700;color:var(--link);
+  padding:6px 2px;border-radius:6px;
+}
+/* Safari and older Chrome draw their own triangle; remove it so ours is the
+   only marker. */
+.speaker .bio > summary::-webkit-details-marker{display:none}
+.speaker .bio > summary::marker{content:""}
+.speaker .bio > summary::after{
+  content:"";width:8px;height:8px;flex:0 0 auto;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .18s ease;
+}
+.speaker .bio[open] > summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.speaker .bio > summary:hover{color:#00399a}
+.speaker .bio > summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.speaker .bio[open] > summary{margin-bottom:10px}
+/* The "hide" wording only makes sense once the panel is open, and the reverse
+   for "read". Both labels live in the DOM; CSS picks the right one. */
+.speaker .bio .lbl-close{display:none}
+.speaker .bio[open] .lbl-open{display:none}
+.speaker .bio[open] .lbl-close{display:inline}
+
+/* Printing is handled in site.js, which opens every panel before the print
+   dialog appears. CSS cannot do this: the hidden part of a closed <details>
+   is not an ordinary hidden box and will not respond to a display override. */
+@media print{ .speaker .bio > summary{display:none} }

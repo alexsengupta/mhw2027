@@ -31,6 +31,10 @@
      To confirm someone: delete their <span class="status"> line.
      To add a speaker: copy a <li class="speaker"> block; portraits live
      in assets/img/speakers/ and are cropped square.
+
+     Each biography sits in a <details class="bio"> so the page reads as a
+     scannable list of names. Anything that must be visible without a click
+     belongs ABOVE the <details> tag, next to the name and affiliation.
      ================================================================= -->
 
 <a class="skip" href="#main">Skip to content</a>
@@ -81,6 +85,11 @@
             <p class="role">Chief Research Scientist</p>
             <p class="where">CSIRO Environment, Hobart, Australia</p>
 
+            <details class="bio">
+            <summary>
+              <span class="lbl-open">Read biography</span><span class="lbl-close">Hide biography</span>
+            </summary>
+
             <p>
               Alistair Hobday led the work that gave this field its common language. The
               2016 hierarchical definition of a marine heatwave, and the category scheme
@@ -110,6 +119,7 @@
               <a href="https://people.csiro.au/H/A/Alistair-Hobday" target="_blank" rel="noopener">CSIRO profile</a>
               <a href="https://scholar.google.com/citations?user=KqlkGh0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
             </p>
+            </details>
           </div>
         </li>
 
@@ -124,6 +134,11 @@
             <h2>Prof. Thomas Frölicher</h2>
             <p class="role">Professor of Climate and Environmental Physics; head of the ocean modelling group</p>
             <p class="where">Oeschger Centre and Physics Institute, University of Bern, Switzerland</p>
+
+            <details class="bio">
+            <summary>
+              <span class="lbl-open">Read biography</span><span class="lbl-close">Hide biography</span>
+            </summary>
 
             <p>
               Thomas Frölicher's 2018 paper in <em>Nature</em> established what marine
@@ -150,6 +165,7 @@
               <a href="https://www.tfroelicher.com/" target="_blank" rel="noopener">Research group</a>
               <a href="https://www.oeschger.unibe.ch/" target="_blank" rel="noopener">Oeschger Centre</a>
             </p>
+            </details>
           </div>
         </li>
 

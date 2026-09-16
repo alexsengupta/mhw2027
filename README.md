@@ -198,6 +198,13 @@ let OneDrive hold only your source photographs and documents.
   by screen readers, and it wastes the reader's attention. When a destination exists,
   swap the span for `<a class="go" href="...">`. There are ten of these on the Key
   dates page at present.
+- **Keynote biographies collapse.** Each one sits in a native
+  `<details class="bio">`, so the page reads as a scannable list of names and
+  affiliations and the prose is one click away. It needs no JavaScript, screen
+  readers announce it correctly, and Chrome and Safari will open a closed panel to
+  reveal a Ctrl+F match. The only thing JavaScript does is open every panel before
+  printing, because a closed `<details>` hides its contents in a way CSS cannot
+  override. The Wix Studio equivalent is the **Accordion** element.
 - **The eight-node rail is duplicated** between `index.html` and `keydates.html`.
   There is no build step, so changing one means changing the other; both carry a
   comment saying so. Once real dates land you may prefer the home page to show only
