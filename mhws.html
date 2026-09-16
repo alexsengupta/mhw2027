@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MHWs · IMHWS-1</title>
+<meta name="description" content="Where marine heatwaves are happening right now, why they matter, and where to find the research literature. From the 1st International Marine Heatwaves Symposium.">
+<link rel="canonical" href="https://www.mhw2027.org/mhws.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MHWs · IMHWS-1">
+<meta property="og:description" content="A daily-updated global marine heatwave map, and where to find the research literature.">
+<meta property="og:image" content="https://www.mhw2027.org/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="IMHWS-1 home">
+      <img src="assets/img/logo-banner.svg" alt="1st International Marine Heatwaves Symposium">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="scope.html">Scope</a>
+      <a href="keynotes.html">Keynotes</a>
+      <a href="keydates.html">Key dates</a>
+      <a href="mhws.html" aria-current="page">MHWs</a>
+      <a href="perth.html">Perth</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<hr class="rule">
+
+<main id="main">
+
+  <!-- ============ LIVE MAP ============ -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Live feed · updated daily</p>
+      <h1 class="h-live">The ocean, right now</h1>
+
+      <div class="panel" id="map-panel">
+        <img id="mhw-map" width="1400" height="900"
+             alt="Global marine heatwave category map from NOAA Coral Reef Watch. The data date is printed on the map itself.">
+        <div class="map-fail">
+          <p style="margin:0 0 .4em">The live map could not be loaded just now.</p>
+          <p style="margin:0"><a href="https://timesareachangin.com/MarineHeatwaves/MHWlive/" target="_blank" rel="noopener">View it directly →</a></p>
+        </div>
+        <div class="map-note">
+          <span>Data: <a href="https://coralreefwatch.noaa.gov/product/marine_heatwave/" target="_blank" rel="noopener">NOAA Coral Reef Watch</a>.
+            Data date shown on the map; NOAA publishes with a short lag.</span>
+          <a href="https://www.marineheatwaves.org/tracker.html" target="_blank" rel="noopener">Full experience → MHW Tracker</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ INFOGRAPHIC ============ -->
+  <section class="section">
+    <div class="wrap">
+      <figure style="margin:0">
+        <!-- Save the file as assets/img/mhw-infographic.jpg and it replaces this
+             placeholder automatically. See README. -->
+        <div class="slot" id="infographic-slot">
+          Infographic not yet added.<br>
+          Save it as <code>assets/img/mhw-infographic.jpg</code> to display it here.
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============ FINDINGS ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="findings" id="findings">
+        <h2>Explore Our Findings</h2>
+        <p>
+          Discover the latest research papers on marine heatwaves. Our collection covers
+          essential studies sharing insights and key findings.
+        </p>
+        <a class="btn btn--outline" href="https://www.marineheatwaves.org/publications.html"
+           target="_blank" rel="noopener">Visit International Marine Heatwaves Working Group</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+</main>
+
+<footer class="site-footer" style="border-top:0;margin-top:0">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="scope.html">Scope</a>
+      <a href="keynotes.html">Keynotes</a>
+      <a href="keydates.html">Key dates</a>
+      <a href="mhws.html">MHWs</a>
+      <a href="perth.html">Perth</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="credit" style="margin:0">
+      IMHWS-1 · <a href="mailto:IMHWS2027@gmail.com" style="font-size:13px">IMHWS2027@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+  // Swap in optional images only if the files exist, so a missing asset shows a
+  // labelled placeholder rather than a broken image icon.
+  (function () {
+    function useIfPresent(src, onReady) {
+      var probe = new Image();
+      probe.onload = function () { onReady(src); };
+      probe.src = src;
+    }
+
+    var slot = document.getElementById('infographic-slot');
+    if (slot) {
+      useIfPresent('assets/img/mhw-infographic.jpg', function (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.loading = 'lazy';
+        img.style.display = 'block';
+        img.style.width = '100%';
+        img.alt = 'Infographic: marine heatwaves drive extreme weather, increased ocean '
+                + 'stressors, biodiversity and habitat loss, and economic loss. Ten times the '
+                + 'intensity compared to pre-industrial times, 50 percent more marine heatwaves '
+                + 'in the past ten years, and 20 to 50 times more projected by 2100.';
+        slot.replaceWith(img);
+      });
+    }
+
+    var findings = document.getElementById('findings');
+    if (findings) {
+      useIfPresent('assets/img/ocean-texture.jpg', function (src) {
+        findings.style.backgroundImage = 'url("' + src + '")';
+      });
+    }
+  })();
+</script>
+</body>
+</html>

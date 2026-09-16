@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · IMHWS-1</title>
+<meta name="description" content="Venue and organising team for IMHWS-1, the 1st International Marine Heatwaves Symposium. University Club, University of Western Australia, Perth, 20–23 September 2027.">
+<link rel="canonical" href="https://www.mhw2027.org/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact · IMHWS-1">
+<meta property="og:description" content="Venue and organising team for the 1st International Marine Heatwaves Symposium.">
+<meta property="og:image" content="https://www.mhw2027.org/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="IMHWS-1 home">
+      <img src="assets/img/logo-banner.svg" alt="1st International Marine Heatwaves Symposium">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="scope.html">Scope</a>
+      <a href="keynotes.html">Keynotes</a>
+      <a href="keydates.html">Key dates</a>
+      <a href="mhws.html">MHWs</a>
+      <a href="perth.html">Perth</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<hr class="rule">
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <div class="cols">
+
+        <div>
+          <h1>Venue</h1>
+          <p class="contact-lines">
+            University Club<br>
+            University of Western Australia<br>
+            Hackett Entrance #1, Hackett Drive<br>
+            Crawley, Western Australia, 6009
+          </p>
+
+          <h2>Organising team</h2>
+          <p class="contact-lines">
+            Prof Thomas Wernberg, University of Western Australia<br>
+            Dr Dan Smale, Marine Biological Association of the UK<br>
+            Organising committee (TBA)<br>
+            International Marine Heatwaves Working group
+          </p>
+
+          <p class="contact-lines" style="margin-top:36px">
+            Email: <a href="mailto:IMHWS2027@gmail.com">IMHWS2027@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="stack-media">
+          <!-- Save the campus photo as assets/img/uwa-campus.jpg and it replaces
+               this placeholder automatically. See README. -->
+          <div class="slot" id="campus-slot" style="border-radius:6px">
+            Campus photograph not yet added.<br>
+            Save it as <code>assets/img/uwa-campus.jpg</code> to display it here.
+          </div>
+
+          <iframe class="mapframe" style="margin-top:14px"
+                  title="Map showing the University of Western Australia, Crawley"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  src="https://maps.google.com/maps?q=University%20Club%20of%20Western%20Australia%2C%20Hackett%20Drive%2C%20Crawley%20WA%206009&amp;z=14&amp;output=embed"></iframe>
+          <p style="margin:8px 0 0;font-size:13px">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=University%20Club%20of%20Western%20Australia%2C%20Hackett%20Drive%2C%20Crawley%20WA%206009"
+               target="_blank" rel="noopener">Open in Google Maps →</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="scope.html">Scope</a>
+      <a href="keynotes.html">Keynotes</a>
+      <a href="keydates.html">Key dates</a>
+      <a href="mhws.html">MHWs</a>
+      <a href="perth.html">Perth</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="credit" style="margin:0">
+      IMHWS-1 · <a href="mailto:IMHWS2027@gmail.com" style="font-size:13px">IMHWS2027@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+  (function () {
+    var slot = document.getElementById('campus-slot');
+    if (!slot) return;
+    var probe = new Image();
+    probe.onload = function () {
+      var img = document.createElement('img');
+      img.src = 'assets/img/uwa-campus.jpg';
+      img.alt = 'Aerial view of the University of Western Australia campus at sunrise, '
+              + 'with Winthrop Hall and the Swan River behind.';
+      img.loading = 'lazy';
+      img.style.cssText = 'display:block;width:100%;border-radius:6px';
+      slot.replaceWith(img);
+    };
+    probe.src = 'assets/img/uwa-campus.jpg';
+  })();
+</script>
+</body>
+</html>
