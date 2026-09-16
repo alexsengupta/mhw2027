@@ -11,7 +11,8 @@ and so the site itself can eventually be served from here rather than from Wix.
 ```
 index.html          Home: tagline, themes, dates, countdown, key-dates rail
 scope.html          Scope & themes: what the symposium covers
-keynotes.html       Keynote speakers (both currently marked invitation pending)
+programme.html      Programme: keynotes (TBA), and how the meeting is assembled
+keynotes.html       Redirect stub -> programme.html (the old URL was circulated)
 keydates.html       Key dates: the same rail plus a full milestone breakdown
 mhws.html           MHWs: live daily map, infographic, Explore Our Findings
 contact.html        Venue, organising team, campus photo, map, email
@@ -38,9 +39,16 @@ site goes live on mhw2027.org.
 background behind "Explore Our Findings" on the MHWs page. It falls back to a plain
 tint, so nothing looks broken.
 
-**Two keynotes are marked "Invitation pending."** Those chips are the only thing
-telling a reader that Hobday and Frölicher have not yet accepted. Do not remove one
-until that person has agreed in writing and approved their biography and photograph.
+**Keynote names are not published.** Drafted entries for Alistair Hobday and Thomas
+Frölicher are preserved, complete and fact-checked, in an HTML comment at the foot of
+`programme.html`, along with instructions for restoring them. They were withheld on
+Thomas Wernberg's view that leading with two senior invitees before a broader slate
+exists reads as a closed club. Neither has accepted in writing. Publish a speaker only
+once they have agreed and approved their biography and photograph.
+
+**Every date on the site is indicative except 20–23 September 2027.** The Dates page
+says so explicitly in a panel above the rail. If the timeline firms up in the first
+circular, that panel should be softened or removed, not left in place out of habit.
 
 Two other decisions worth making before launch:
 
@@ -198,6 +206,18 @@ let OneDrive hold only your source photographs and documents.
   by screen readers, and it wastes the reader's attention. When a destination exists,
   swap the span for `<a class="go" href="...">`. There are ten of these on the Key
   dates page at present.
+- **The nav is all single words** — Home, Scope, Programme, Dates, MHWs, Perth,
+  Contact. The page files are still `keydates.html` and so on; only the labels changed.
+- **`keynotes.html` is a redirect stub**, not a real page. It carries a meta refresh and
+  a canonical pointing at `programme.html`, because that URL was circulated to reviewers
+  in September 2026. A static host cannot issue a real 301. Delete it once nobody is
+  following the old link.
+- **The in-person statement lives at the foot of the Scope page**, under "Why we are
+  meeting in person". It argues from what this meeting is specifically for rather than
+  asserting that the benefits outweigh the emissions, and it ends with four concrete
+  commitments. Those commitments are what stop it reading as an apologia — one of them
+  (recording talks) is a real obligation on the organisers, so either honour it or
+  change it before launch.
 - **Keynote biographies collapse.** Each one sits in a native
   `<details class="bio">`, so the page reads as a scannable list of names and
   affiliations and the prose is one click away. It needs no JavaScript, screen
