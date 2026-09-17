@@ -212,6 +212,13 @@ let OneDrive hold only your source photographs and documents.
   a canonical pointing at `programme.html`, because that URL was circulated to reviewers
   in September 2026. A static host cannot issue a real 301. Delete it once nobody is
   following the old link.
+- **There is deliberately no "what counts as a marine heatwave" section.** A section
+  defining the phenomenon fought the rest of the page, which argues the scope is wide and
+  that abstracts get sorted into themes afterwards. Its one load-bearing job — telling
+  people working on cold spells, subsurface or estuarine events that they are wanted —
+  now sits in the opening paragraph, where it is read rather than scrolled past. The
+  qualitative definition itself lives on the MHWs page. Resist putting it back: a heading
+  that begins "What counts" reads as gatekeeping however permissive the text below it is.
 - **The in-person statement lives at the foot of the Scope page**, under "Meeting in
   person". It makes the positive case — what this meeting is for, why Perth — rather
   than arguing about aviation emissions. **Do not add commitments to it** (recordings,
