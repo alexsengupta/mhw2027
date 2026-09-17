@@ -212,12 +212,15 @@ let OneDrive hold only your source photographs and documents.
   a canonical pointing at `programme.html`, because that URL was circulated to reviewers
   in September 2026. A static host cannot issue a real 301. Delete it once nobody is
   following the old link.
-- **The in-person statement lives at the foot of the Scope page**, under "Why we are
-  meeting in person". It argues from what this meeting is specifically for rather than
-  asserting that the benefits outweigh the emissions, and it ends with four concrete
-  commitments. Those commitments are what stop it reading as an apologia — one of them
-  (recording talks) is a real obligation on the organisers, so either honour it or
-  change it before launch.
+- **The in-person statement lives at the foot of the Scope page**, under "Meeting in
+  person". It makes the positive case — what this meeting is for, why Perth — rather
+  than arguing about aviation emissions. **Do not add commitments to it** (recordings,
+  workshops, catering, merchandise) until those things are actually organised. An unmet
+  promise on this page is worse than no promise, which is why the earlier draft's list
+  of four was removed.
+- **The programme length is provisional.** The site says four days; the main meeting may
+  end up being three. There is a comment to that effect in `programme.html`. If it
+  changes, the number appears in `programme.html`, `keydates.html` and `scope.html`.
 - **Keynote biographies collapse.** Each one sits in a native
   `<details class="bio">`, so the page reads as a scannable list of names and
   affiliations and the prose is one click away. It needs no JavaScript, screen
