@@ -88,3 +88,93 @@ second dependency for one page on your site.
 **Keep the two files in sync.** `perth-embed.html` is generated from `perth.html`.
 If you edit the cards, edit `perth.html` and regenerate, rather than editing both and
 letting them drift.
+
+
+---
+
+# The key dates timeline widget
+
+`timeline-embed.html` is a self-contained widget. No external CSS, no
+framework, nothing shared with the rest of the site.
+
+```
+https://alexsengupta.github.io/mhw2027/timeline-embed.html
+```
+
+## What it does that a static list does not
+
+It works out today's date and shows where you are in the cycle:
+
+- The rail **fills to the current date**, animating on load. The fill is
+  proportional to elapsed time, not to how many nodes have passed.
+- Milestones already gone are **filled navy and muted**.
+- The next one due is **ringed green, labelled NEXT, and pulses gently**.
+- The symposium itself is **red**.
+- A line underneath reads "Next: First circular — about 40 days away".
+- The **unfilled part of the rail is a pale version of the same gradient**, so the
+  colour is always present and simply lights up as the fill reaches it.
+- The symposium dot **bursts every six and a half seconds** — twelve particles and a
+  shockwave ring. Decorative, hidden from screen readers, and switched off entirely
+  for anyone whose system asks for reduced motion.
+
+None of that needs maintaining. It recalculates on every page load, so the
+highlight moves down the rail by itself as the year goes on.
+
+Horizontal on desktop, vertical on screens under 900px. Anyone whose system
+asks for reduced motion gets the finished state immediately rather than
+nothing.
+
+## Updating the dates
+
+One array at the top of the script, near the foot of the file:
+
+```js
+var MILESTONES = [
+  { show:"Late 2026",  label:"First circular",  date:"2026-11-15" },
+  ...
+];
+```
+
+- `show` is what the reader sees. Write it however you like.
+- `label` is the milestone name.
+- `date` is used only to work out what is past and where the fill reaches.
+  For a vague entry like "Late 2026", put your best estimate — it never
+  appears on screen.
+- `kind:"event"` marks the symposium itself, which gets the red treatment.
+
+Add or remove entries freely; the layout adjusts. Keep them in date order.
+
+## Embedding it in Wix
+
+Exactly as for the Perth embed:
+
+1. Add an **IFrame** element, Website address, paste the URL above.
+2. Width: stretch. Height: 330 as a starting point.
+3. Note its ID.
+4. In the page code, inside `$w.onReady`:
+
+```js
+$w("#html2").onMessage((event) => {
+  const data = event.data;
+  if (data && data.type === "imhws-height" && data.height > 0) {
+    $w("#html2").height = data.height;
+  }
+});
+```
+
+Change `#html2` to whatever the iframe's actual ID is. If you already have
+the Perth one on another page, each page needs its own copy of this with its
+own ID.
+
+5. Set the containing section's height to **Auto**.
+
+Expected heights: about **310px** on desktop, **620px** on a phone.
+
+## Worth knowing
+
+**It lives on both the Home and Dates pages**, so embed the same URL twice
+rather than making two copies. One file, one place to edit.
+
+**The dates are currently placeholders** matching the indicative timeline.
+When the first circular fixes them, update the array once and both pages
+change.

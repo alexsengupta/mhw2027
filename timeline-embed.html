@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMHWS-1 key dates</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   IMHWS-1 KEY DATES — embeddable widget
+
+   Self-contained: no external CSS, no framework. Drop it in an
+   iframe anywhere.
+
+   TO UPDATE THE DATES, edit the MILESTONES array in the script at
+   the foot of this file. Nothing else needs touching. Each entry
+   has a display string, a label, and a real date used only to work
+   out what is past and what is next — so "Late 2026" can show as
+   written while still being positioned correctly.
+   ============================================================ */
+
+:root{
+  --ink:#1d2b39; --muted:#8194a6; --navy:#0c356a;
+  --rule:#dde7f2; --green:#15803d; --red:#df2a2f;
+  --bg:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:transparent}
+/* The pulsing ring on the "next" dot scales beyond its box, which pushes the
+   page sideways on narrow screens. Clip it rather than shrink the animation. */
+html,body{overflow-x:hidden}
+body{
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+}
+.wrap{max-width:1180px;margin:0 auto;padding:4px 16px 10px}
+
+/* ---- the rail ---- */
+.tl{position:relative;list-style:none;margin:0;padding:0;
+    display:grid;grid-auto-flow:column;grid-auto-columns:1fr}
+
+/* track behind everything */
+.tl::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:4px;
+  transform:translateY(-50%);border-radius:2px;
+  /* A pale version of the same cool-to-hot ramp, so the colour is always
+     present and simply lights up as the fill reaches it. Better than grey
+     turning to colour, and it keeps the right-hand side alive. */
+  background:linear-gradient(90deg,#c3d6e9 0%,#cbe0e4 28%,#d5e8e2 48%,
+                             #f8e3c6 70%,#f9dbbe 86%,#f4cbcb 100%);
+}
+/* the filled portion, width set by script = progress to today */
+.tl::after{
+  content:"";position:absolute;left:0;top:50%;height:4px;width:0;
+  transform:translateY(-50%);border-radius:2px;
+  background:linear-gradient(90deg,#0b5aaf 0%,#3f9fc4 28%,#7bc6c6 48%,
+                             #ffad3d 70%,#ff9a2e 86%,#df2a2f 100%);
+  background-size:var(--railw,1200px) 4px;
+  transition:width 1.6s cubic-bezier(.22,.8,.3,1);
+}
+
+.item{position:relative;display:grid;grid-template-rows:1fr 26px 1fr;
+      justify-items:center;text-align:center;padding:0 7px;min-height:190px}
+
+.dot{grid-row:2;align-self:center;position:relative;width:15px;height:15px;border-radius:50%;
+     background:#fff;border:3px solid var(--rule);box-shadow:0 0 0 5px var(--bg);
+     z-index:2;transition:border-color .4s ease,background .4s ease,transform .4s ease}
+
+.lbl{display:block;max-width:190px;opacity:0;transform:translateY(6px);
+     transition:opacity .5s ease,transform .5s ease}
+.item:nth-child(odd)  .lbl{grid-row:1;align-self:end;padding-bottom:14px}
+.item:nth-child(even) .lbl{grid-row:3;align-self:start;padding-top:14px}
+
+.when{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.what{display:block;font-size:14px;font-weight:600;line-height:1.35;color:var(--ink)}
+
+/* ---- state: already happened ---- */
+.item.is-past .dot{background:var(--navy);border-color:var(--navy)}
+.item.is-past .what{color:#5b6b7c;font-weight:500}
+
+/* ---- state: the next one due ---- */
+.item.is-next .dot{width:19px;height:19px;background:#fff;border-color:var(--green)}
+.item.is-next .when{color:var(--green)}
+.item.is-next .what{font-weight:700}
+.item.is-next .dot::after{
+  content:"";position:absolute;inset:-7px;border-radius:50%;
+  border:2px solid var(--green);opacity:.55;
+  animation:ping 2.4s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes ping{0%{transform:scale(.75);opacity:.6}70%{transform:scale(1.5);opacity:0}100%{opacity:0}}
+
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;
+     text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-bottom:4px}
+.is-next .tag{background:#dcf5e3;color:var(--green)}
+.is-event .tag{background:#fde8e8;color:var(--red)}
+
+/* ---- state: the symposium itself ---- */
+.item.is-event .dot{width:21px;height:21px;background:var(--red);border-color:#a81d1d}
+.item.is-event .when{color:var(--red)}
+.item.is-event .what{font-size:15px;font-weight:700;color:#111}
+
+
+/* ---- the symposium goes off every few seconds ----
+   Twelve particles fired from the red dot on a slow loop. The visible part
+   is the first fifth of the cycle; the rest is the wait. Angles, distances,
+   colours and delays are set per particle from the script. */
+.burst{position:absolute;inset:0;pointer-events:none;z-index:1}
+.burst i{
+  position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px;
+  border-radius:50%;background:var(--c);opacity:0;
+  animation:burst 6.5s cubic-bezier(.15,.75,.3,1) var(--delay) infinite;
+}
+@keyframes burst{
+  0%   {transform:rotate(var(--a)) translateX(3px) scale(.6);opacity:0}
+  3%   {opacity:1}
+  20%  {transform:rotate(var(--a)) translateX(var(--d)) scale(.25);opacity:0}
+  100% {transform:rotate(var(--a)) translateX(var(--d)) scale(.25);opacity:0}
+}
+/* a shockwave ring on the same beat */
+.item.is-event .dot{animation:thump 6.5s ease-out infinite}
+@keyframes thump{
+  0%{transform:scale(1)} 3%{transform:scale(1.35)} 12%{transform:scale(1)} 100%{transform:scale(1)}
+}
+.shock{
+  position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--red);
+  opacity:0;animation:shock 6.5s ease-out infinite;pointer-events:none;
+}
+@keyframes shock{
+  0%{transform:scale(.6);opacity:.7} 22%{transform:scale(3.2);opacity:0} 100%{opacity:0}
+}
+
+/* ---- reveal ---- */
+.ready .lbl{opacity:1;transform:none}
+.tl .item:nth-child(1) .lbl{transition-delay:.10s}
+.tl .item:nth-child(2) .lbl{transition-delay:.18s}
+.tl .item:nth-child(3) .lbl{transition-delay:.26s}
+.tl .item:nth-child(4) .lbl{transition-delay:.34s}
+.tl .item:nth-child(5) .lbl{transition-delay:.42s}
+.tl .item:nth-child(6) .lbl{transition-delay:.50s}
+.tl .item:nth-child(7) .lbl{transition-delay:.58s}
+.tl .item:nth-child(8) .lbl{transition-delay:.66s}
+.tl .item:nth-child(9) .lbl{transition-delay:.74s}
+
+.foot{margin:14px 0 0;font-size:12.5px;color:var(--muted);text-align:center}
+
+/* ---- narrow screens: the rail turns vertical ---- */
+@media (max-width:900px){
+  .tl{grid-auto-flow:row;grid-auto-columns:auto}
+  .tl::before{left:9px;right:auto;top:4px;bottom:4px;width:4px;height:auto;transform:none;
+    background:linear-gradient(180deg,#c3d6e9 0%,#cbe0e4 28%,#d5e8e2 48%,
+                               #f8e3c6 70%,#f9dbbe 86%,#f4cbcb 100%)}
+  .tl::after{left:9px;top:4px;width:4px;height:0;transform:none;
+    background:linear-gradient(180deg,#0b5aaf 0%,#3f9fc4 28%,#7bc6c6 48%,
+                               #ffad3d 70%,#ff9a2e 86%,#df2a2f 100%);
+    background-size:4px var(--railh,900px);
+    transition:height 1.6s cubic-bezier(.22,.8,.3,1)}
+  .item{grid-template-rows:auto;grid-template-columns:22px 1fr;
+        justify-items:start;text-align:left;padding:10px 0;min-height:0}
+  .item .lbl,.item:nth-child(odd) .lbl,.item:nth-child(even) .lbl{
+    grid-row:1;grid-column:2;align-self:center;padding:0 0 0 14px;max-width:none}
+  .dot{grid-row:1;grid-column:1;align-self:center}
+  .when{font-size:12px}
+  .what{font-size:15px}
+}
+
+/* Anyone who has asked their system to reduce motion gets the finished
+   state immediately rather than no information at all. */
+@media (prefers-reduced-motion:reduce){
+  .tl::after{transition:none}
+  .lbl{transition:none;opacity:1;transform:none}
+  .is-next .dot::after{animation:none}
+  .burst i,.shock,.item.is-event .dot{animation:none}
+  .burst{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <ol class="tl" id="tl" aria-label="Key dates for IMHWS-1"></ol>
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+/* ============================================================
+   THE DATES — this is the only part you need to edit.
+
+   show  : what the reader sees. Write it however you like.
+   label : the milestone name.
+   date  : used ONLY to work out what is past and what is next,
+           and where the progress bar reaches. For a vague entry
+           like "Late 2026", put your best estimate.
+   kind  : leave blank, or "event" for the symposium itself.
+
+   Add or remove entries freely; the layout adjusts. Keep them in
+   date order.
+   ============================================================ */
+var MILESTONES = [
+  { show:"Open now",        label:"Expressions of interest",                       date:"2026-01-01" },
+  { show:"Late 2026",       label:"First circular",                                date:"2026-11-15" },
+  { show:"Dec 2026",        label:"Abstracts & early bird open",                   date:"2026-12-01" },
+  { show:"1 Apr 2027",      label:"Abstract submission closes",                    date:"2027-04-01" },
+  { show:"Early May 2027",  label:"Notification of acceptance",                    date:"2027-05-07" },
+  { show:"Late Jun 2027",   label:"Early bird closes",                             date:"2027-06-25" },
+  { show:"Early Aug 2027",  label:"Programme published",                           date:"2027-08-07" },
+  { show:"End Aug 2027",    label:"Registration closes",                           date:"2027-08-31" },
+  { show:"20–23 Sep 2027",  label:"IMHWS-1, Perth",       kind:"event",            date:"2027-09-20" }
+];
+
+/* ------------------------------------------------------------
+   Everything below is machinery. You should not need to touch it.
+   ------------------------------------------------------------ */
+(function () {
+  var tl = document.getElementById('tl');
+  var now = new Date();
+
+  var items = MILESTONES.map(function (m) {
+    var d = new Date(m.date + 'T00:00:00');
+    return { show:m.show, label:m.label, kind:m.kind || '', at:d, past:d < now };
+  });
+
+  // The next milestone is the first one still ahead of us. If the symposium
+  // has been and gone there is no "next", which is correct rather than a bug.
+  var nextIndex = items.findIndex(function (i) { return !i.past; });
+
+  items.forEach(function (m, i) {
+    var li = document.createElement('li');
+    li.className = 'item'
+      + (m.past ? ' is-past' : '')
+      + (i === nextIndex ? ' is-next' : '')
+      + (m.kind === 'event' ? ' is-event' : '');
+
+    var tag = '';
+    if (i === nextIndex && m.kind !== 'event') tag = '<span class="tag">Next</span>';
+    if (m.kind === 'event') tag = '<span class="tag">The symposium</span>';
+
+    li.innerHTML =
+      '<span class="lbl">' + tag +
+        '<span class="when">' + m.show + '</span>' +
+        '<span class="what">' + m.label + '</span>' +
+      '</span>' +
+      '<span class="dot" aria-hidden="true"></span>';
+
+    if (m.kind === 'event') addBurst(li.querySelector('.dot'));
+
+    // Screen readers get the state in words, not just colour.
+    var state = m.past ? 'completed' : (i === nextIndex ? 'next' : 'upcoming');
+    li.setAttribute('aria-label', m.show + ': ' + m.label + ' — ' + state);
+    tl.appendChild(li);
+  });
+
+
+  /* Twelve particles at irregular angles, so it reads as a burst rather than
+     a clock face. Decorative only, hidden from assistive tech. */
+  function addBurst(dot) {
+    if (!dot) return;
+    var colours = ['#df2a2f','#ff9a2e','#ffad3d','#df2a2f','#ffc46b','#ff7a3d'];
+    var wrap = document.createElement('span');
+    wrap.className = 'burst';
+    wrap.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 12; i++) {
+      var dart = document.createElement('i');
+      var angle = (i * 30) + (i % 3) * 7;          // uneven spacing
+      var dist  = 26 + ((i * 37) % 22);            // uneven reach
+      dart.style.setProperty('--a', angle + 'deg');
+      dart.style.setProperty('--d', dist + 'px');
+      dart.style.setProperty('--c', colours[i % colours.length]);
+      dart.style.setProperty('--delay', (i % 4) * 0.04 + 's');
+      wrap.appendChild(dart);
+    }
+    var ring = document.createElement('span');
+    ring.className = 'shock';
+    ring.setAttribute('aria-hidden', 'true');
+    dot.appendChild(ring);
+    dot.appendChild(wrap);
+  }
+
+  /* ---- how far along the rail we are ----
+     Measured in real time between the first and last milestone, so the fill
+     is proportional to elapsed time rather than to how many nodes have gone. */
+  function progress() {
+    var first = items[0].at.getTime();
+    var last  = items[items.length - 1].at.getTime();
+    var p = (now.getTime() - first) / (last - first);
+    return Math.max(0, Math.min(1, p));
+  }
+
+  function paint() {
+    var p = progress();
+    var vertical = window.matchMedia('(max-width:900px)').matches;
+    var rect = tl.getBoundingClientRect();
+    // The gradient must span the whole rail, not only the filled part, or the
+    // colours compress as the fill grows.
+    tl.style.setProperty('--railw', rect.width + 'px');
+    tl.style.setProperty('--railh', rect.height + 'px');
+
+    // A pseudo-element cannot be sized from JS directly, so drive it through
+    // a stylesheet we own.
+    var style = document.getElementById('fillstyle');
+    if (!style) {
+      style = document.createElement('style');
+      style.id = 'fillstyle';
+      document.head.appendChild(style);
+    }
+    var fill = (p * 100).toFixed(2) + '%';
+    style.textContent = vertical
+      ? '.tl::after{height:' + fill + ';width:4px}'
+      : '.tl::after{width:' + fill + '}';
+  }
+
+  function foot() {
+    var el = document.getElementById('foot');
+    if (nextIndex === -1) { el.textContent = 'The symposium has taken place.'; return; }
+    var days = Math.ceil((items[nextIndex].at - now) / 86400000);
+    el.textContent = 'Next: ' + items[nextIndex].label
+      + (days > 0 ? ' — about ' + days.toLocaleString() + ' days away' : '')
+      + '. All dates before the symposium are indicative.';
+  }
+
+  foot();
+  requestAnimationFrame(function () {
+    paint();
+    document.body.classList.add('ready');
+    setTimeout(report, 50);
+  });
+  window.addEventListener('resize', function () { paint(); report(); });
+
+  /* ---- tell the host page how tall we are ---- */
+  var last = 0;
+  function report() {
+    var h = Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height) + 12;
+    if (Math.abs(h - last) < 2) return;
+    last = h;
+    parent.postMessage({ type:'imhws-height', height:h }, '*');
+  }
+  window.addEventListener('load', report);
+  if (window.ResizeObserver) new ResizeObserver(report).observe(document.querySelector('.wrap'));
+})();
+</script>
+</body>
+</html>
