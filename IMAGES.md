@@ -37,7 +37,7 @@ The credit then renders as a small line under the photo automatically.
 
 ```html
 <div class="shot-slot"
-     data-shot="rottnest.jpg"
+     data-shot="perth-09-rottnest.jpg"
      data-alt="Turquoise bay with limestone headland at Rottnest Island"
      data-credit="Photo: A. Photographer / CC BY-SA 4.0"
      data-credit-url="https://commons.wikimedia.org/wiki/File:Example.jpg">
@@ -57,23 +57,23 @@ browsing one shows you everything available on the subject at once.
 
 | Save as | Subject | Where to look | |
 |---|---|---|---|
-| `perth/kings-park.jpg` | Kings Park wildflowers | [category](https://commons.wikimedia.org/wiki/Category:Flora_in_Kings_Park,_Western_Australia) | ✓ |
-| `perth/matilda-bay.jpg` | Swan River foreshore | [category](https://commons.wikimedia.org/wiki/Category:Swan_River,_Western_Australia) | ✓ |
-| `perth/uwa.jpg` | Winthrop Hall, UWA | [category](https://commons.wikimedia.org/wiki/Category:Winthrop_Hall) | ✓ |
-| `perth/mettams.jpg` | Perth coast reef / snorkelling | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Marmion+Marine+Park+reef) | ~ |
-| `perth/fremantle.jpg` | Fremantle streetscape | [category](https://commons.wikimedia.org/wiki/Category:Fremantle_(suburb)) | ✓ |
-| `perth/boola-bardip.jpg` | WA Museum Boola Bardip | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Western+Australian+Museum+Perth) | ~ |
-| `perth/whales.jpg` | Humpback whale | [category](https://commons.wikimedia.org/wiki/Category:Megaptera_novaeangliae) | ✓ |
-| `perth/swan-valley.jpg` | Swan Valley | [category](https://commons.wikimedia.org/wiki/Category:Swan_Valley) | ✓ |
-| `perth/rottnest.jpg` | Rottnest Island coast | [category](https://commons.wikimedia.org/wiki/Category:Coastline_of_Rottnest) | ✓ |
-| `perth/bibbulmun.jpg` | Bibbulmun Track | [category](https://commons.wikimedia.org/wiki/Category:Bibbulmun_track) | ✓ |
-| `perth/john-forrest.jpg` | John Forrest National Park | [category](https://commons.wikimedia.org/wiki/Category:John_Forrest_National_Park) | ✓ |
-| `perth/yanchep.jpg` | Yanchep National Park | [category](https://commons.wikimedia.org/wiki/Category:Yanchep_National_Park) | ✓ |
-| `perth/dive-charter.jpg` | Diving in Western Australia | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=scuba+diving+Western+Australia) | ~ |
-| `perth/cape-to-cape.jpg` | Margaret River coast | [category](https://commons.wikimedia.org/wiki/Category:Margaret_River) | ✓ |
-| `perth/ningaloo.jpg` | Ningaloo Reef | [category](https://commons.wikimedia.org/wiki/Category:Ningaloo_Reef) | ✓ |
-| `perth/esperance.jpg` | Lucky Bay, Cape Le Grand | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Cape+Le+Grand+Lucky+Bay) | ~ |
-| `perth/karijini.jpg` | Karijini gorges | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Karijini+National+Park+gorge) | ~ |
+| `perth/perth-01-kings-park.jpg` | Kings Park wildflowers | [category](https://commons.wikimedia.org/wiki/Category:Flora_in_Kings_Park,_Western_Australia) | ✓ |
+| `perth/perth-02-matilda-bay.jpg` | Swan River foreshore | [category](https://commons.wikimedia.org/wiki/Category:Swan_River,_Western_Australia) | ✓ |
+| `perth/perth-03-uwa.jpg` | Winthrop Hall, UWA | [category](https://commons.wikimedia.org/wiki/Category:Winthrop_Hall) | ✓ |
+| `perth/perth-04-mettams.jpg` | Perth coast reef / snorkelling | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Marmion+Marine+Park+reef) | ~ |
+| `perth/perth-05-fremantle.jpg` | Fremantle streetscape | [category](https://commons.wikimedia.org/wiki/Category:Fremantle_(suburb)) | ✓ |
+| `perth/perth-06-boola-bardip.jpg` | WA Museum Boola Bardip | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Western+Australian+Museum+Perth) | ~ |
+| `perth/perth-07-whales.jpg` | Humpback whale | [category](https://commons.wikimedia.org/wiki/Category:Megaptera_novaeangliae) | ✓ |
+| `perth/perth-08-swan-valley.jpg` | Swan Valley | [category](https://commons.wikimedia.org/wiki/Category:Swan_Valley) | ✓ |
+| `perth/perth-09-rottnest.jpg` | Rottnest Island coast | [category](https://commons.wikimedia.org/wiki/Category:Coastline_of_Rottnest) | ✓ |
+| `perth/perth-10-bibbulmun.jpg` | Bibbulmun Track | [category](https://commons.wikimedia.org/wiki/Category:Bibbulmun_track) | ✓ |
+| `perth/perth-11-john-forrest.jpg` | John Forrest National Park | [category](https://commons.wikimedia.org/wiki/Category:John_Forrest_National_Park) | ✓ |
+| `perth/perth-12-yanchep.jpg` | Yanchep National Park | [category](https://commons.wikimedia.org/wiki/Category:Yanchep_National_Park) | ✓ |
+| `perth/perth-13-dive-charter.jpg` | Diving in Western Australia | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=scuba+diving+Western+Australia) | ~ |
+| `perth/perth-14-cape-to-cape.jpg` | Margaret River coast | [category](https://commons.wikimedia.org/wiki/Category:Margaret_River) | ✓ |
+| `perth/perth-15-ningaloo.jpg` | Ningaloo Reef | [category](https://commons.wikimedia.org/wiki/Category:Ningaloo_Reef) | ✓ |
+| `perth/perth-16-esperance.jpg` | Lucky Bay, Cape Le Grand | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Cape+Le+Grand+Lucky+Bay) | ~ |
+| `perth/perth-17-karijini.jpg` | Karijini gorges | [search](https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search=Karijini+National+Park+gorge) | ~ |
 
 
 ## Clearance checklist — must be completed before go-live
@@ -92,26 +92,26 @@ written permission or replacement. `own` = produced for this site.
 
 | File | Slot | Source evidence | Status |
 |---|---|---|---|
-| `perth/kings-park.jpg` | Kings Park | commons — Flora in Kings Park | credit needed |
-| `perth/rottnest.jpg` | Rottnest | commons — CSIRO ScienceImage 11315 | credit needed |
-| `perth/bibbulmun.jpg` | Bibbulmun | commons — Bibbulmun track | credit needed |
-| `perth/uwa.jpg` | UWA campus | commons — University of WA | credit needed |
-| `perth/whales.jpg` | Whale watching | commons — Megaptera novaeangliae | credit needed |
-| `perth/ningaloo.jpg` | Ningaloo | commons — Ningaloo Reef | credit needed |
-| `perth/matilda-bay.jpg` | Matilda Bay | web — parks naming, photographer R. Pendreigh | permission or replace |
-| `perth/mettams.jpg` | Mettams Pool | web — parks naming, photographer R. Deepchand | permission or replace |
-| `perth/yanchep.jpg` | Yanchep | web — DBCA filename | permission or replace |
-| `perth/john-forrest.jpg` | John Forrest | web — source unknown | permission or replace |
-| `perth/fremantle.jpg` | Fremantle | web — blog, pre-sized 900x600 | permission or replace |
-| `perth/boola-bardip.jpg` | WA Museum | web — source unknown, also low resolution | permission or replace |
-| `perth/swan-valley.jpg` | Swan Valley | web — tour operator CMS filename | permission or replace |
-| `perth/cape-to-cape.jpg` | Margaret River | web — source unknown | permission or replace |
-| `perth/esperance.jpg` | Lucky Bay | web — source unknown | permission or replace |
-| `perth/karijini.jpg` | Karijini | web — source unknown | permission or replace |
-| `perth/dive-charter.jpg` | Dive charters | web — source unknown | permission or replace |
+| `perth/perth-01-kings-park.jpg` | Kings Park | commons — Flora in Kings Park | credit needed |
+| `perth/perth-09-rottnest.jpg` | Rottnest | commons — CSIRO ScienceImage 11315 | credit needed |
+| `perth/perth-10-bibbulmun.jpg` | Bibbulmun | commons — Bibbulmun track | credit needed |
+| `perth/perth-03-uwa.jpg` | UWA campus | commons — University of WA | credit needed |
+| `perth/perth-07-whales.jpg` | Whale watching | commons — Megaptera novaeangliae | credit needed |
+| `perth/perth-15-ningaloo.jpg` | Ningaloo | commons — Ningaloo Reef | credit needed |
+| `perth/perth-02-matilda-bay.jpg` | Matilda Bay | web — parks naming, photographer R. Pendreigh | permission or replace |
+| `perth/perth-04-mettams.jpg` | Mettams Pool | web — parks naming, photographer R. Deepchand | permission or replace |
+| `perth/perth-12-yanchep.jpg` | Yanchep | web — DBCA filename | permission or replace |
+| `perth/perth-11-john-forrest.jpg` | John Forrest | web — source unknown | permission or replace |
+| `perth/perth-05-fremantle.jpg` | Fremantle | web — blog, pre-sized 900x600 | permission or replace |
+| `perth/perth-06-boola-bardip.jpg` | WA Museum | web — source unknown, also low resolution | permission or replace |
+| `perth/perth-08-swan-valley.jpg` | Swan Valley | web — tour operator CMS filename | permission or replace |
+| `perth/perth-14-cape-to-cape.jpg` | Margaret River | web — source unknown | permission or replace |
+| `perth/perth-16-esperance.jpg` | Lucky Bay | web — source unknown | permission or replace |
+| `perth/perth-17-karijini.jpg` | Karijini | web — source unknown | permission or replace |
+| `perth/perth-13-dive-charter.jpg` | Dive charters | web — source unknown | permission or replace |
 | `uwa-campus.jpg` | Contact page | web — UWA "Seekers Space" banner | ask UWA Marketing |
-| `perth-montage.jpg` | Perth page banner | montage, component sources unknown | confirm with the maker |
-| `og-card.jpg` | Social preview | derived from `perth-montage.jpg` | inherits the above |
+| `perth/perth-00-montage.jpg` | Perth page banner | montage, component sources unknown | confirm with the maker |
+| `og-card.jpg` | Social preview | derived from `perth/perth-00-montage.jpg` | inherits the above |
 | `mhw-infographic.jpg` | MHWs page | IMHW Working Group | confirm permission |
 | `favicon.svg` | Browser tab | own — drawn for this site | cleared |
 | `logo-banner.svg`, `mhw-group.svg`, `themes.svg` | Branding | own — symposium artwork | cleared |
