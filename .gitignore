@@ -1,2 +1,6 @@
 .DS_Store
 *.log
+
+# Raw form exports contain names and emails; never publish them
+*.csv
+*.xlsx
