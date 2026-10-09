@@ -32,7 +32,7 @@ html,body{margin:0;padding:0;background:transparent;overflow-x:hidden}
 body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
 .wrap{max-width:1180px;margin:0 auto;padding:4px 16px 12px}
 
-.lede{text-align:center;font-size:clamp(16px,2.1vw,19px);line-height:1.5;margin:0 auto 22px;max-width:760px;color:#33475b}
+.lede{text-align:center;font-size:14.5px;line-height:1.5;margin:0 auto 18px;max-width:760px;color:#33475b}
 .lede b{color:var(--navy);font-weight:800}
 
 .panels{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
@@ -139,11 +139,10 @@ var LABELS = {
   function build(){
     var multi=Math.round(pct(D.multi_discipline,D.answered_discipline));
     var mean=D.mean_interests;
-    document.getElementById('lede').innerHTML=
-      'People ticked <b>'+(Math.round(mean*10)/10)+'</b> areas of interest on average, and <b>'+
-      fraction(multi)+'</b> work across more than one discipline. Hover or tap a bar to see how the two sides connect.';
+    document.getElementById('lede').innerHTML='Hover or tap a bar to see how the two sides connect.';
     document.getElementById('foot').innerHTML=
-      'Share of people who answered each question; people could choose several, so bars do not add to 100%. '+
+      'Share of people who answered each question. People ticked '+(Math.round(mean*10)/10)+
+      ' areas of interest on average, and '+fraction(multi)+' work across more than one discipline, so bars do not add to 100%. '+
       '<i></i> marks the overall figure when a bar is selected. Up to '+fmtDate(D.updated)+'.';
 
     rowsI=make('barsI',order(D.interests),'I');
