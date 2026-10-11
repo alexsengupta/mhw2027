@@ -259,3 +259,51 @@ to be left off.
 **Wording assumes a growing list.** The map footnote says "received up to
 <date>", which updates itself from the JSON. If sign-ups close, nothing needs
 changing.
+
+
+---
+
+# The participants accordion (recommended way to show the community graphics)
+
+`participants-embed.html` wraps the map and the interests charts in two
+collapsible panels, so Wix needs only **one** iframe:
+
+```
+https://alexsengupta.github.io/mhw2027/participants-embed.html
+```
+
+- **Where are participants coming from?** (subtitle fills in "218 people from
+  34 countries so far" from the data)
+- **What are participants studying?**
+
+Both start closed. A graphic loads the first time its panel is opened, so the
+map's animation plays when someone is actually looking at it. Both panels can
+be open at once. Titles and subtitles are in the `PANELS` array at the foot of
+the file; set `open:true` on one to have it open on arrival.
+
+## In Wix
+
+1. Add an **IFrame** element to the section, Website address, paste the URL.
+2. Width: stretch. Height: **190** (the closed height; about 220 on phones).
+3. Section height: **Auto**, so the section grows when a panel opens.
+4. Page code, using your iframe's ID:
+
+```js
+$w.onReady(function () {
+  $w("#html5").onMessage((event) => {
+    const data = event.data;
+    if (data && data.type === "imhws-height" && data.height > 0) {
+      $w("#html5").height = data.height;
+    }
+  });
+});
+```
+
+Without step 4 the panels still open, but inside a fixed-height box with a
+scrollbar. With it, the iframe grows and shrinks as panels open and close.
+
+Open heights, as a check: about 930 with the map open, 1540 with both open on
+desktop.
+
+You do not also need to embed the two graphics separately; this page loads
+them itself.
