@@ -269,5 +269,28 @@ var LABELS = {
   if(window.ResizeObserver) new ResizeObserver(report).observe(document.getElementById('wrap'));
 })();
 </script>
+<script>
+/* ---- FIT MODE ----
+   Add ?fit=1 to the URL (as the Wix embeds do) and the graphic shrinks to
+   fit whatever box it is given, so the frame never needs a scrollbar.
+   Without ?fit=1 the page behaves normally. */
+(function(){
+  if(!/[?&]fit=1/.test(location.search)) { window.__fit=1; return; }
+  document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';
+  var w=document.getElementById('wrap'); window.__fit=1;
+  w.style.transformOrigin='top center';
+  function fit(){
+    var h=w.offsetHeight;                 // layout height, unaffected by transform
+    var s=h>0?Math.min(1,(window.innerHeight-2)/h):1;
+    window.__fit=s;
+    w.style.transform=s<1?'scale('+s+')':'';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  if(window.ResizeObserver) new ResizeObserver(fit).observe(w);
+})();
+</script>
 </body>
 </html>

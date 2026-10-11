@@ -307,3 +307,21 @@ desktop.
 
 You do not also need to embed the two graphics separately; this page loads
 them itself.
+
+
+## Update: embedding the graphics in a Wix Studio accordion
+
+Wix cannot resize an embed from page code, so the participants accordion
+page could not grow when opened. The working setup is a native Wix Studio
+accordion (Add Elements → Layout Tools → Accordions) with one embed per item,
+using these URLs:
+
+```
+https://alexsengupta.github.io/mhw2027/community-map-embed.html?fit=1
+https://alexsengupta.github.io/mhw2027/community-interests-embed.html?fit=1
+```
+
+`?fit=1` makes each graphic shrink to fit whatever box Wix gives it, so
+there is never a scrollbar inside the frame. Size the embed box roughly to
+the graphic (about 750 tall for the map and 640 for the interests chart on
+desktop) so it is not shrunk more than needed. No page code is required.
