@@ -221,8 +221,6 @@ var PERTH = [115.86,-31.95];
     });
     var nCountries=Object.keys(data.countries).filter(function(k){return k!=='Unknown';}).length;
 
-    countUp('nPeople',total); countUp('nCountries',nCountries);
-    countUp('nContinents',Object.keys(continents).length);
     document.getElementById('foot').textContent='Based on expressions of interest received up to '
       +fmtDate(data.updated)+'. Hover or tap a circle for numbers.';
 
@@ -322,11 +320,24 @@ var PERTH = [115.86,-31.95];
     }
 
     // ---- reveal ----
-    requestAnimationFrame(function(){
-      document.getElementById('wrap').classList.add('ready');
-      arcs.forEach(function(a){a.path.style.strokeDashoffset=0;});
-      report();
-    });
+    // Wait until the map is actually on screen (e.g. a collapsed Wix
+    // accordion being opened) so the animation is not wasted.
+    var revealed=false;
+    function reveal(){
+      if(revealed) return; revealed=true;
+      countUp('nPeople',total); countUp('nCountries',nCountries);
+      countUp('nContinents',Object.keys(continents).length);
+      requestAnimationFrame(function(){
+        document.getElementById('wrap').classList.add('ready');
+        arcs.forEach(function(a){a.path.style.strokeDashoffset=0;});
+        report();
+      });
+    }
+    if(reduce||!('IntersectionObserver' in window)) reveal();
+    else new IntersectionObserver(function(es,o){
+      if(es[0].isIntersecting){ o.disconnect(); reveal(); }
+    },{threshold:.2}).observe(svg);
+    report();
 
     // ---- sparks travelling to Perth ----
     // Each country sends sparks in proportion to the square root of its
