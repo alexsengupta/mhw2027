@@ -585,3 +585,28 @@ p{margin:0 0 1em}
 .tier--bronze .price{background:#b06c3e;color:#fdefe6}
 .tier--bursary h3{background:#15803d;color:#fff}
 .tier--bursary .price{background:#1a9149;color:#e6f7ec}
+
+
+/* ============================================================
+   IMPACT STAT ROW  (sponsorship page)
+
+   A KPI row, not a chart: four headline numbers from ONE event.
+   The caption says which event — without it the figures read as
+   global statistics, which they are not.
+
+   One accent for every value rather than four hues. The numbers
+   are four facets of the same thing, not four series, so giving
+   them different colours would imply an encoding that isn't there.
+   Values #c21f24 on white = 5.97:1, labels #1d2b39 = 14.4:1.
+   ============================================================ */
+.statband{height:4px;border-radius:2px;margin:0 0 22px;
+  background:linear-gradient(90deg,#0b5aaf 0%,#3f9fc4 28%,#7bc6c6 48%,
+                             #ffad3d 70%,#ff9a2e 86%,#df2a2f 100%)}
+.stats{display:grid;gap:14px;margin:0;padding:0;list-style:none;
+       grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.stat{border:1px solid #e8eef6;border-radius:12px;background:#fff;padding:16px 18px}
+.stat .v{display:block;font-size:clamp(30px,3.4vw,40px);font-weight:700;
+         line-height:1.05;color:#c21f24;letter-spacing:-.015em}
+.stat .v .u{font-size:.52em;font-weight:700;margin-left:2px;letter-spacing:0}
+.stat .k{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:#1d2b39}
+.statnote{margin:14px 0 30px;font-size:13.5px;line-height:1.55;color:var(--grey);max-width:70ch}
