@@ -590,9 +590,9 @@ p{margin:0 0 1em}
 /* ============================================================
    IMPACT STAT ROW  (sponsorship page)
 
-   A KPI row, not a chart: four headline numbers from ONE event.
-   The caption says which event — without it the figures read as
-   global statistics, which they are not.
+   A KPI row, not a chart: four global headline figures, all from
+   Smith et al., Science 2021. Keep the source line — the numbers
+   are only persuasive because they are checkable.
 
    One accent for every value rather than four hues. The numbers
    are four facets of the same thing, not four series, so giving
@@ -610,3 +610,11 @@ p{margin:0 0 1em}
 .stat .v .u{font-size:.52em;font-weight:700;margin-left:2px;letter-spacing:0}
 .stat .k{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:#1d2b39}
 .statnote{margin:14px 0 30px;font-size:13.5px;line-height:1.55;color:var(--grey);max-width:70ch}
+
+/* The "8 of 10" tile carries a unit array rather than a sparkline:
+   ten markers, eight filled. Part-to-whole at a glance, and it
+   states the denominator, which a bare percentage never does.
+   Decorative duplicate of the text, so hidden from screen readers. */
+.dots{display:flex;gap:4px;margin:9px 0 0}
+.dots i{width:9px;height:9px;border-radius:50%;background:#c21f24}
+.dots i.off{background:none;border:1.5px solid #d8c3c3}
