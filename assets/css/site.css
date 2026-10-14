@@ -609,6 +609,13 @@ p{margin:0 0 1em}
          line-height:1.05;color:#c21f24;letter-spacing:-.015em}
 .stat .v .u{font-size:.52em;font-weight:700;margin-left:2px;letter-spacing:0}
 .stat .k{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:#1d2b39}
+/* ---- the marine-heatwave impacts graphic (sponsors.html, mhws.html) ----
+   Two SVGs swapped by a <picture> media query; an SVG cannot reflow, so the
+   landscape one would set 14px type at roughly 4px on a phone. */
+.graphic{margin:0 0 30px;max-width:1200px}
+.graphic img{display:block;width:100%;height:auto;border-radius:12px}
+.graphic figcaption{margin-top:12px}
+
 .statnote{margin:14px 0 30px;font-size:13.5px;line-height:1.55;color:var(--grey);max-width:70ch}
 
 /* The "8 of 10" tile carries a unit array rather than a sparkline:

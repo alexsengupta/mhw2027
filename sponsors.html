@@ -79,29 +79,32 @@
            same venue (~200-250, mostly overseas). Replace once expressions
            of interest give a real number.
            ================================================================= -->
-      <div class="statband" aria-hidden="true"></div>
-
-      <ul class="stats">
-        <li class="stat"><span class="v">54<span class="u">%</span></span>
-          <span class="k">more marine heatwave days than a century ago</span></li>
-
-        <li class="stat"><span class="v">8<span class="u">of 10</span></span>
-          <span class="k">most severe events on record have happened since 2010</span>
-          <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></span></li>
-
-        <li class="stat"><span class="v">34<span class="u">+</span></span>
-          <span class="k">events with documented social and economic impacts, in every ocean basin</span></li>
-
-        <li class="stat"><span class="v">$3.1<span class="u">bn</span></span>
-          <span class="k">a year in indirect losses, from a single event</span></li>
-      </ul>
-
-      <p class="statnote">
-        Source: Smith, Burrows, Hobday, Sen Gupta, Moore, Thomsen, Wernberg and Smale,
-        <em>Socioeconomic impacts of marine heatwaves</em>, <strong>Science</strong> 374
-        (2021), whose authors
-        include members of this symposium's organising team.
-      </p>
+      <!-- The graphic is our own work, so there is nothing to clear. Two files:
+           a landscape version for wide screens and a stacked one for phones,
+           because an SVG cannot reflow and the landscape type would render at
+           about 4px on a 390px screen. Both are generated from the same source
+           and carry identical wording — if you edit one, edit the other. -->
+      <figure class="graphic">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/img/mhw-impacts-tall.svg">
+          <img src="assets/img/mhw-impacts.svg"
+               alt="Marine heatwaves are prolonged, discrete periods of anomalously warm water.
+                    Documented consequences: habitats collapse, with kelp forests razed, coral
+                    bleached and killed and seagrass meadows lost; mass mortality of fish,
+                    invertebrates, seabirds and marine mammals; species on the move, with ranges
+                    shifting poleward, harmful algal blooms and disease; and livelihoods hit,
+                    through fishery closures and quota cuts, aquaculture mortalities and losses to
+                    tourism and coastal towns. There are 54 per cent more marine heatwave days than
+                    a century ago, 8 of the 10 most severe events on record have happened since
+                    2010, more than 34 events have documented social and economic impacts, and a
+                    single event cost US$3.1 billion a year in indirect losses.">
+        </picture>
+        <figcaption class="statnote">
+          Figures from Smith, Burrows, Hobday, Sen Gupta, Moore, Thomsen, Wernberg and Smale,
+          <em>Socioeconomic impacts of marine heatwaves</em>, <strong>Science</strong> 374
+          (2021) &mdash; a paper whose authors include members of this symposium's organising team.
+        </figcaption>
+      </figure>
 
       <p style="max-width:70ch">
         <strong>IMHWS-1 is the first international meeting devoted entirely to marine
