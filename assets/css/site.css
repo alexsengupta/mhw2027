@@ -552,3 +552,36 @@ p{margin:0 0 1em}
    dialog appears. CSS cannot do this: the hidden part of a closed <details>
    is not an ordinary hidden box and will not respond to a display override. */
 @media print{ .speaker .bio > summary{display:none} }
+
+
+/* ============================================================
+   SPONSORSHIP TIERS
+   Card per level. The price band is the thing people scan for,
+   so it gets the colour and sits directly under the name.
+   ============================================================ */
+.tiers{display:grid;gap:16px;margin:26px 0 0;
+       grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.tier{border:1px solid #e1e9f2;border-radius:14px;background:#fff;
+      box-shadow:0 4px 14px rgba(12,53,106,.05);overflow:hidden;
+      display:flex;flex-direction:column}
+.tier h3{margin:0;padding:14px 18px 10px;font-size:17px;letter-spacing:.01em}
+.tier .price{
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  padding:9px 18px;font-size:13px;font-weight:700;
+  background:#eef4fb;color:var(--navy);
+}
+.tier .price .amt{font-size:15px}
+.tier ul{margin:0;padding:14px 18px 18px 34px;font-size:14px;line-height:1.5;color:#33414f}
+.tier ul li{margin:0 0 7px}
+.tier ul li:last-child{margin-bottom:0}
+
+.tier--platinum h3{background:#0c356a;color:#fff}
+.tier--platinum .price{background:#123f78;color:#cfe0f5}
+.tier--gold h3{background:#b8860b;color:#fff}
+.tier--gold .price{background:#d19a16;color:#fff8e7}
+.tier--silver h3{background:#6b7a8a;color:#fff}
+.tier--silver .price{background:#7e8d9c;color:#f2f6fa}
+.tier--bronze h3{background:#9a5a32;color:#fff}
+.tier--bronze .price{background:#b06c3e;color:#fdefe6}
+.tier--bursary h3{background:#15803d;color:#fff}
+.tier--bursary .price{background:#1a9149;color:#e6f7ec}
