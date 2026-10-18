@@ -609,6 +609,24 @@ p{margin:0 0 1em}
          line-height:1.05;color:#c21f24;letter-spacing:-.015em}
 .stat .v .u{font-size:.52em;font-weight:700;margin-left:2px;letter-spacing:0}
 .stat .k{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:#1d2b39}
+/* ---- unfilled placeholder text ------------------------------------------
+   Deliberately ugly. If this ever appears on the live site, it should be
+   impossible to miss. Search the HTML for "todo" before publishing. */
+mark.todo{background:#ffe8a3;color:#7a4b00;border:1px dashed #c08a00;
+          border-radius:4px;padding:0 5px;font-weight:700;font-style:normal}
+@media print{mark.todo{background:none;border:1px solid #000}}
+
+/* ---- sponsorship: GST note and the "Also available" list ---------------- */
+.gstline{max-width:70ch;margin:18px 0 0;font-size:14px;line-height:1.55;color:var(--grey)}
+.extras{margin:18px 0 0;max-width:78ch}
+.extras dt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;
+           margin:0;padding:14px 0 0;border-top:1px solid #e1e9f2;
+           font-weight:700;font-size:16px;color:#0c356a}
+.extras dt:first-of-type{border-top:0;padding-top:0}
+.extras dt span{font-weight:400;font-size:14px;color:var(--grey);letter-spacing:.01em}
+.extras dd{margin:5px 0 16px;font-size:14.5px;line-height:1.55;color:#33414f}
+.extras dd:last-child{margin-bottom:0}
+
 /* ---- the marine-heatwave impacts graphic (sponsors.html, mhws.html) ----
    Two SVGs swapped by a <picture> media query; an SVG cannot reflow, so the
    landscape one would set 14px type at roughly 4px on a phone. */
