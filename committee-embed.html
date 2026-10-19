@@ -236,16 +236,35 @@
      instead of showing an inner scrollbar or a tall empty box on mobile. */
   (function () {
     var wrap = document.querySelector('.embed-wrap');
+    var last = 0;
+
+    /* Only post when the number actually changes, so the host isn't spammed. */
     function send() {
       var h = Math.ceil(wrap.getBoundingClientRect().height) + 16;
-      parent.postMessage({ type: 'imhws-height', height: h }, '*');
+      if (h && h !== last) {
+        last = h;
+        parent.postMessage({ type: 'imhws-height', height: h }, '*');
+      }
     }
     window.imhwsMeasure = send;
+
     window.addEventListener('load', send);
     window.addEventListener('resize', send);
     if (window.ResizeObserver) new ResizeObserver(send).observe(wrap);
-    setTimeout(send, 250);
-    setTimeout(send, 1200);   /* after webfonts and photos settle */
+
+    /* The host often resizes this frame AFTER we have already reported, which
+       changes our column count and therefore our height. A ResizeObserver
+       should catch that, but does not always fire inside a cross-origin frame,
+       so poll for a while as well. Cheap, and it stops on its own. */
+    var ticks = 0;
+    var poll = setInterval(function () {
+      send();
+      if (++ticks > 40) clearInterval(poll);     /* 20 seconds, then stop */
+    }, 500);
+
+    /* And keep a slow heartbeat for later reflows, e.g. someone rotating a
+       phone or the host changing breakpoint without a window resize event. */
+    setInterval(send, 3000);
   })();
 </script>
 </body>
