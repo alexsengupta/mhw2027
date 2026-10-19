@@ -4,3 +4,6 @@
 # Raw form exports contain names and emails; never publish them
 *.csv
 *.xlsx
+
+# Full-resolution photo sources, not served by the site
+photos/_originals/

@@ -609,6 +609,46 @@ p{margin:0 0 1em}
          line-height:1.05;color:#c21f24;letter-spacing:-.015em}
 .stat .v .u{font-size:.52em;font-weight:700;margin-left:2px;letter-spacing:0}
 .stat .k{display:block;margin-top:7px;font-size:13.5px;line-height:1.4;color:#1d2b39}
+/* ---- committee.html: people cards -------------------------------------
+   The avatar shows initials (::before, from data-initials) until a photo is
+   dropped into photos/<slug>.<ext>, at which point the inline script adds
+   .has-photo and appends an <img>. Nothing breaks while photos are missing. */
+.people{display:grid;gap:18px;margin:24px 0 0;padding:0;list-style:none;
+        grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.person{display:flex;gap:0;align-items:stretch;
+        border:1px solid #e1e9f2;border-radius:14px;background:#fff;
+        box-shadow:0 4px 14px rgba(12,53,106,.05);padding:0;overflow:hidden}
+/* The photo runs flush to the card's left, top and bottom edges and finishes
+   in a half-ellipse on the right. align-self:stretch makes it take whatever
+   height the tallest card in the row sets, so a row always looks even. */
+.avatar{flex:0 0 136px;width:136px;align-self:stretch;min-height:150px;
+        border-radius:0 50% 50% 0 / 0 50% 50% 0;
+        background:#e8eff8;position:relative;overflow:hidden}
+.avatar::before{content:attr(data-initials);position:absolute;inset:0;
+                display:flex;align-items:center;justify-content:center;
+                font-size:33px;font-weight:700;color:#5b7390}
+.avatar.has-photo::before{content:none}
+.avatar img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.person .who{min-width:0;padding:16px 18px 16px 14px;align-self:center}
+.person h3{margin:2px 0 0;font-size:16.5px;line-height:1.25}
+.person .affil{margin:5px 0 0;font-size:13.5px;line-height:1.45;color:#5b6f84}
+.person .blurb{margin:8px 0 0;font-size:14px;line-height:1.5;color:#33414f}
+.person .plink{margin:8px 0 0;font-size:13px}
+@media (max-width:430px){
+  .avatar{flex:0 0 108px;width:108px;min-height:132px}
+  .person .who{padding:14px 14px 14px 12px}
+}
+.groupnote.tba{color:#5b7390;font-style:italic}
+
+/* ---- committee: subtle group separators and creature placeholders ------ */
+.grouphead{margin:38px 0 0;font-size:15px;font-weight:700;letter-spacing:.09em;
+           text-transform:uppercase;color:#5b7390}
+.groupnote{margin:8px 0 0;max-width:70ch;font-size:14.5px;line-height:1.55;color:#41505e}
+.hairline{border:0;border-top:1px solid #e8eff8;margin:42px 0 0}
+.avatar .critter{position:absolute;inset:14%;width:72%;height:72%;color:var(--c,#5b7390)}
+.avatar[style*="--c"]{background:color-mix(in srgb, var(--c) 12%, #fff)}
+.avatar.has-photo{background:#e8eff8}
+
 /* ---- unfilled placeholder text ------------------------------------------
    Deliberately ugly. If this ever appears on the live site, it should be
    impossible to miss. Search the HTML for "todo" before publishing. */
